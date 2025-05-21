@@ -1,3 +1,14 @@
+import mysql.connector  # Add this import if using MySQL, adjust as needed
+
+def connect_db():
+    # Update the connection parameters as per your database configuration
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="1234",
+        database="livestock_db"
+    )
+
 def add_livestock(tag_id, name, breed, age, weight, health_status):
     db = connect_db()
     cursor = db.cursor()
