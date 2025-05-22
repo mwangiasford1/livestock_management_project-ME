@@ -1,11 +1,15 @@
 document.querySelector("form").addEventListener("submit", function(event) {
-    let animalName = document.getElementById("animal_name").value.trim();
+    let species = document.getElementById("species").value.trim();
     let breed = document.getElementById("breed").value.trim();
     let age = document.getElementById("age").value;
-    let healthStatus = document.getElementById("health_status").value.trim();
+    let weight = document.getElementById("weight").value.trim();
+    let errorMessage = document.getElementById("error-message");
 
-    if (animalName === "" || breed === "" || healthStatus === "" || age <= 0) {
-        alert("Please fill in all fields correctly!");
+    if (species === "" || breed === "" || weight === "" || isNaN(age) || age <= 0) {
         event.preventDefault();
+        errorMessage.innerHTML = "❌ Please fill all fields correctly!";
+        errorMessage.style.color = "red";
+    } else {
+        errorMessage.innerHTML = "";
     }
 });

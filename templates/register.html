@@ -13,7 +13,7 @@
         {% endif %}
     {% endwith %}
     <div class="card p-4 shadow-sm">
-        <form action="{{ url_for('auth.register') }}" method="POST">
+        <form action="{{ url_for('auth.submit') }}" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" id="username" name="username" class="form-control" required>
@@ -31,6 +31,9 @@
 
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
+    </div>
+    <div class="mt-3">
+        <a href="{{ url_for('auth.register') }}">Register</a>
     </div>
 </div>
 {% endblock %}

@@ -1,23 +1,15 @@
-from flask_sqlalchemy import SQLAlchemy
+from extensions import db
 from flask_login import UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
 
-db = SQLAlchemy()
-
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
+    username = db.Column(db.String(150), nullable=False, unique=True)
+    password = db.Column(db.String(255), nullable=False)  # Increase size to 255
 
 class Livestock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    species = db.Column(db.String(100))  # Use species instead of animal_name
-    breed = db.Column(db.String(100))
-    age = db.Column(db.Integer)
-    weight = db.Column(db.Float)
+    species = db.Column(db.String(100), nullable=False)  # Use species instead of name
+    breed = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    weight = db.Column(db.Float, nullable=False)
+    health_status = db.Column(db.String(100), nullable=False)

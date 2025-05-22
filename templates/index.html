@@ -8,54 +8,33 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h1 class="text-primary">Enter Livestock Data</h1>
-    <div class="card p-4 shadow-sm">
-        <form action="/submit" method="POST">
-            <div class="mb-3">
-                <label for="animal_name" class="form-label">Animal Name:</label>
-                <input type="text" id="animal_name" name="animal_name" class="form-control" required>
-            </div>
+    <h2>Livestock Data</h2>
+    {% for entry in livestock %}
+        <p><strong>Species:</strong> {{ entry.species }}</p>
+        <p><strong>Breed:</strong> {{ entry.breed }}</p>
+        <p><strong>Age:</strong> {{ entry.age }}</p>
+        <p><strong>Health Status:</strong> {{ entry.health_status }}</p>
+        <hr>
+    {% endfor %}
 
+    <!-- Form for submitting new livestock data -->
+    <div class="card p-4 shadow-sm mt-4">
+        <form action="{{ url_for('auth.submit') }}" method="POST">
             <div class="mb-3">
-                <label for="breed" class="form-label">Breed:</label>
-                <input type="text" id="breed" name="breed" class="form-control" required>
+                <input type="text" name="species" placeholder="Species" class="form-control" required>
             </div>
-
             <div class="mb-3">
-                <label for="age" class="form-label">Age:</label>
-                <input type="number" id="age" name="age" class="form-control" required>
+                <input type="text" name="breed" placeholder="Breed" class="form-control" required>
             </div>
-
             <div class="mb-3">
-                <label for="health_status" class="form-label">Health Status:</label>
-                <input type="text" id="health_status" name="health_status" class="form-control" required>
+                <input type="number" name="age" placeholder="Age" class="form-control" required>
             </div>
-
+            <div class="mb-3">
+                <input type="text" name="health_status" placeholder="Health Status" class="form-control" required>
+            </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>
-
-    <!-- Add this below your form in index.html -->
-
-    <table class="table table-striped mt-5">
-        <thead>
-            <tr>
-                <th>Animal Name</th>
-                <th>Breed</th>
-                <th>Age</th>
-                <th>Health Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for animal in livestock %}
-            <tr>
-                <td>{{ animal.animal_name }}</td>
-                <td>{{ animal.breed }}</td>
-                <td>{{ animal.age }}</td>
-                <td>{{ animal.health_status }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </div>
+<a href="{{ url_for('auth.login') }}">Login</a>
 {% endblock %}
