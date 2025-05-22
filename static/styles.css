@@ -1,20 +1,57 @@
-.alert {
-    padding: 10px;
-    border-radius: 5px;
-}
-
 .navbar {
     background-color: #007bff;
     padding: 10px;
+    text-align: center;
 }
 
 .navbar a {
     color: white;
-    margin-right: 15px;
     text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
 }
 
-#error-message {
-    font-weight: bold;
-    margin-top: 10px;
+.navbar a:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+}
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+form {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
 }
